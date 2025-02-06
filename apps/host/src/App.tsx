@@ -1,13 +1,13 @@
-import Settings from 'settings/RemoteEntry';
-import Home from 'home/RemoteEntry';
-import { BrowserRouter, Route, Routes } from 'react-router';
-import AppLayout from './components/AppLayout';
-import { useLocalStorage } from './useLocalStorage';
+import Settings from "settings/RemoteEntry";
+import Home from "home/RemoteEntry";
+import { BrowserRouter, Route, Routes } from "react-router";
+import AppLayout from "./components/AppLayout";
+import { useLocalStorage } from "./useLocalStorage";
 
 function App() {
-  const [showBoundaries, setShowBoundaries] = useLocalStorage(
-    'showBoundaries',
-    false,
+  const [showBoundaries, _setShowBoundaries] = useLocalStorage(
+    "showBoundaries",
+    false
   );
   return (
     <BrowserRouter>
@@ -15,13 +15,13 @@ function App() {
         <Route
           element={
             <div className="h-full">
-              <button
+              {/* <button
                 type="button"
-                className="absolute top-8 right-1/2 m-2 p-2 bg-transparent border-white border-2 text-white rounded-lg z-10"
+                className="absolute bottom-4 left-4 m-2 p-2 bg-transparent border-neutral-300 border-2 text-white rounded-lg z-10"
                 onClick={() => setShowBoundaries(!showBoundaries)}
               >
                 Toggle Boundaries
-              </button>
+              </button> */}
               <AppLayout showBoundary={showBoundaries} />
             </div>
           }
@@ -30,7 +30,9 @@ function App() {
             path="/"
             element={
               <div
-                className={`${showBoundaries ? 'border-orange-500' : 'border-transparent'} m-2 p-2 border`}
+                className={`${
+                  showBoundaries ? "border-orange-500" : "border-transparent"
+                } m-2 p-2 border`}
               >
                 {showBoundaries ? (
                   <span className="bg-gradient-to-r from-orange-300 to-orange-600 text-white font-bold rounded-lg p-1">
@@ -47,7 +49,9 @@ function App() {
             path="/settings"
             element={
               <div
-                className={`${showBoundaries ? 'border-blue-500' : 'border-transparent'} m-3 p-3 border`}
+                className={`${
+                  showBoundaries ? "border-blue-500" : "border-transparent"
+                } m-3 p-3 border`}
               >
                 {showBoundaries ? (
                   <span className="bg-gradient-to-r from-blue-300 to-blue-600 font-bold  p-1 rounded-lg">

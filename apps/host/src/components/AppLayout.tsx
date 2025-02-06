@@ -1,12 +1,17 @@
-import { Header } from './Header';
-import { Outlet } from 'react-router';
+import { Heart } from "lucide-react";
+import { Header } from "./Header";
+import { Outlet } from "react-router";
 
 export default function Layout({
   showBoundary = false,
-}: { showBoundary?: boolean }) {
+}: {
+  showBoundary?: boolean;
+}) {
   return (
     <div
-      className={`border flex flex-col h-full pt-2 ${showBoundary ? 'border-white' : 'border-transparent'}`}
+      className={`border flex flex-col h-full  ${
+        showBoundary ? "border-white" : "border-transparent"
+      }`}
     >
       <div>
         {showBoundary ? (
@@ -21,8 +26,12 @@ export default function Layout({
       <div className="flex-grow">
         <Outlet />
       </div>
-      <footer className="bg-black text-white p-4 min-h-24 border-t border-gray-100">
-        <h1 className="text-xl">Footer</h1>
+      <footer className="flex items-center justify-center py-10 min-h-24">
+        <a className="flex items-center gap-2 text-white opacity-50">
+          <span>Made with </span>
+          <Heart className="text-red-500" />
+          <span> by Nathan Roark</span>
+        </a>
       </footer>
     </div>
   );

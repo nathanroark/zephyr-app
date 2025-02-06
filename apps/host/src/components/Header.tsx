@@ -1,14 +1,14 @@
-import { Cloud, Github, Menu, X } from 'lucide-react';
-import React from 'react';
-import { Link } from 'react-router';
-import { useLocalStorage } from '../useLocalStorage';
+import { Github, Menu, X } from "lucide-react";
+import React from "react";
+import { Link } from "react-router";
+// import { useLocalStorage } from "../useLocalStorage";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   return (
     <header className="w-full bg-black backdrop-blur-md ">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-10">
           <Link to="/">
             <img
               src="https://cdn.prod.website-files.com/669061ee3adb95b628c3acda/66acd2a968324f3e610c1cae_zephyr%20logo.svg"
@@ -20,23 +20,11 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 text-gray-400">
             <a
-              href="https://docs.zephyr-cloud.io/"
-              className="hover:text-gray-600 transition-colors"
-            >
-              Documentation
-            </a>
-            <a
-              href="https://github.com/ZephyrCloudIO/zephyr-examples"
+              href="https://github.com/nathanroark/zephyr-app"
               className="inline-flex items-center hover:text-gray-600 transition-colors"
             >
               <Github className="h-5 w-5 mr-1" />
               <span>GitHub</span>
-            </a>
-            <a
-              href="https://app.zephyr-cloud.io"
-              className="px-4 py-2 bg-gray-100 text-black rounded-lg hover:bg-gray-300 transition-colors"
-            >
-              Get Started
             </a>
           </nav>
 

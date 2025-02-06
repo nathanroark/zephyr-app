@@ -11,6 +11,8 @@
   "dependencies": {
     "@repo/tailwind-config": "workspace:^",
     "@repo/typescript-config": "workspace:^",
+    "@tanstack/react-query": "^5.66.0",
+    "@tanstack/react-query-devtools": "^5.66.0",
     "autoprefixer": "^10.4.20",
     "lucide-react": "^0.460.0",
     "postcss": "^8.4.49",
