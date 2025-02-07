@@ -79,7 +79,7 @@ export function CocktailGenerator() {
 
         <div className="flex items-center justify-center">
           <p className="text-muted-foreground">
-            Select a spirit and add ingredients to generate a AI cocktail
+            Select a spirit and add ingredients to have ai generate a cocktail
             recipe.
           </p>
         </div>
