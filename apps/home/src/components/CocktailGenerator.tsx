@@ -74,14 +74,12 @@ export function CocktailGenerator() {
         <div className="flex items-center justify-center mb-6">
           <Martini className="w-10 h-10 text-white" />
 
-          <h2 className="text-3xl font-bold tracking-tight">
-            Cocktail Generator
-          </h2>
+          <h2 className="text-3xl font-bold tracking-tight">AI Cocktail</h2>
         </div>
 
         <div className="flex items-center justify-center">
           <p className="text-muted-foreground">
-            Select a spirit and add ingredients to generate a custom cocktail
+            Select a spirit and add ingredients to generate a AI cocktail
             recipe.
           </p>
         </div>
