@@ -8,11 +8,9 @@ export function CocktailMenu() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="some-ui-theme">
       <QueryClientProvider client={queryClient}>
-        <div className="h-full  p-10 flex flex-col items-center justify-center">
-          <div className="rounded-md p-4">
-            <div className="text-white">
-              <CocktailGenerator />
-            </div>
+        <div className="h-full p-10 flex flex-col items-center justify-center">
+          <div className="w-full max-w-2xl">
+            <CocktailGenerator />
           </div>
         </div>
       </QueryClientProvider>

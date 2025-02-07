@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Check, ChevronsUpDown, Martini } from "lucide-react";
+import { useCocktailQuery } from "../lib/queries";
 
 import { Button } from "./ui/button";
 import {
@@ -33,39 +34,42 @@ const spirits = [
 export function CocktailGenerator() {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+  const [spirit, setSpirit] = React.useState("");
   const [ingredients, setIngredients] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
-  const [recipe, setRecipe] = React.useState<any>(null);
 
-  const handleGenerate = () => {
+  // Convert the comma-separated string to an array
+  const ingredientsArray = ingredients
+    .split(",")
+    .map((ing) => ing.trim())
+    .filter(Boolean);
+
+  // Use our updated hook
+  const { data, refetch, error } = useCocktailQuery(spirit, ingredientsArray);
+
+  const [loading, setLoading] = React.useState(false);
+
+  // Prevent spamming the API by disabling the button briefly
+  const handleFetch = async () => {
+    if (loading) return;
     setLoading(true);
-    // Simulating API call
-    setTimeout(() => {
-      setRecipe({
-        name: "Tropical Sunset",
-        ingredients: [
-          { name: "Rum", amount: "2 oz" },
-          { name: "Pineapple juice", amount: "3 oz" },
-          { name: "Coconut cream", amount: "1 oz" },
-          { name: "Lime juice", amount: "0.5 oz" },
-          { name: "Grenadine", amount: "0.5 oz" },
-        ],
-        instructions: [
-          "Fill a shaker with ice.",
-          "Add rum, pineapple juice, coconut cream, and lime juice to the shaker.",
-          "Shake vigorously for 10-15 seconds.",
-          "Strain into a tall glass filled with ice.",
-          "Slowly pour grenadine over the back of a spoon to create a layered effect.",
-          "Garnish with a pineapple wedge and a cherry.",
-          "Serve and enjoy your Tropical Sunset!",
-        ],
-      });
-      setLoading(false);
-    }, 2000);
+    await refetch(); // This will fetch from /api/cocktail with our query params
+    setLoading(false);
   };
 
+  // Handle errors
+  if (error instanceof Error) {
+    return (
+      <div className="text-red-500 font-semibold mt-4">
+        ⚠️ Error: {error.message}
+      </div>
+    );
+  }
+
+  // Extract the recipe object from the response
+  const recipe = data?.recipe;
+
   return (
-    <div className="max-w-2xl mx-auto p-6 space-y-8">
+    <div className="mx-auto py-3 md:py-6 space-y-8 w-full max-w-2xl">
       <div className="space-y-2">
         <div className="flex items-center justify-center mb-6">
           <Martini className="w-10 h-10 text-white" />
@@ -74,10 +78,13 @@ export function CocktailGenerator() {
             Cocktail Generator
           </h2>
         </div>
-        <p className="text-muted-foreground">
-          Select a spirit and add ingredients to generate a custom cocktail
-          recipe.
-        </p>
+
+        <div className="flex items-center justify-center">
+          <p className="text-muted-foreground">
+            Select a spirit and add ingredients to generate a custom cocktail
+            recipe.
+          </p>
+        </div>
       </div>
       <Separator />
       <div className="grid gap-4">
@@ -107,6 +114,7 @@ export function CocktailGenerator() {
                       value={spirit.value}
                       onSelect={(currentValue) => {
                         setValue(currentValue === value ? "" : currentValue);
+                        setSpirit(currentValue === value ? "" : currentValue);
                         setOpen(false);
                       }}
                     >
@@ -130,7 +138,7 @@ export function CocktailGenerator() {
             onChange={(e) => setIngredients(e.target.value)}
           />
         </div>
-        <Button onClick={handleGenerate} disabled={loading}>
+        <Button onClick={handleFetch} disabled={loading}>
           {loading ? "Generating..." : "Create Cocktail"}
         </Button>
       </div>
