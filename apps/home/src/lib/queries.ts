@@ -18,7 +18,8 @@ export const useSimpleCocktailQuery = () => {
 export function useCocktailQuery(spirit: string, ingredients: string[]) {
   // const baseUrl = "http://localhost:3003/";
   const baseUrl = "https://nextjs-ai-backend.vercel.app/";
-  const url = baseUrl + "api/custom-cocktail/recipe?${params.toString()}";
+  // const url = baseUrl + "api/custom-cocktail/recipe?${params.toString()}";
+  const routeUrl = baseUrl + "api/custom-cocktail/recipe?";
 
   const params = new URLSearchParams();
   if (spirit) {
@@ -27,6 +28,10 @@ export function useCocktailQuery(spirit: string, ingredients: string[]) {
   if (ingredients.length > 0) {
     params.append("ingredients", ingredients.join(","));
   }
+
+  const url = routeUrl + params.toString();
+  console.log(params.toString());
+  console.log(url);
 
   return useQuery({
     queryKey: ["customCocktailRecipe"],

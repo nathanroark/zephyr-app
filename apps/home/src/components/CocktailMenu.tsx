@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Martini } from "lucide-react";
-import { AiResponse } from "./AiResponse";
+import { AiResponse } from "./SimpleAiResponse";
 
 export function CocktailMenu() {
   const queryClient = new QueryClient();

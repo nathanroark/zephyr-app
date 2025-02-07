@@ -1,7 +1,7 @@
 // components/AiResponse.tsx
 
 import { useState } from "react";
-import { useCocktailQuery } from "../libs/queries";
+import { useCocktailQuery } from "../lib/queries";
 
 interface Ingredient {
   name: string;
@@ -58,7 +58,7 @@ export function AiResponse() {
             </label>
             <select
               id="spirit-select"
-              className="rounded px-2 py-1"
+              className="rounded px-2 py-1 bg-black text-white border border-neutral-300"
               value={selectedSpirit}
               onChange={(e) => setSelectedSpirit(e.target.value)}
             >
@@ -80,7 +80,7 @@ export function AiResponse() {
             <input
               id="ingredients-input"
               type="text"
-              className="rounded px-2 py-1 w-64"
+              className="rounded px-2 py-1 w-64 bg-black text-white border border-neutral-300"
               placeholder="e.g. lime juice, sugar syrup"
               value={ingredientInput}
               onChange={(e) => setIngredientInput(e.target.value)}
@@ -88,7 +88,7 @@ export function AiResponse() {
           </div>
 
           <button
-            className={`px-4 py-2 bg-white text-black rounded-3xl hover:bg-neutral-200 transition-colors mx-auto ${
+            className={`px-4 py-2 bg-white text-black rounded-3xl hover:bg-neutral-200 border border-neutral-300 transition-colors mx-auto ${
               loading || isFetching ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={handleFetch}

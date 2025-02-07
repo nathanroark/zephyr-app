@@ -1,4 +1,4 @@
-import { useSimpleCocktailQuery } from "../libs/queries";
+import { useSimpleCocktailQuery } from "../lib/queries";
 import { useState } from "react";
 
 interface Ingredient {
