@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronsUpDown, Martini } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 import {
   Command,
   CommandEmpty,
@@ -9,22 +9,18 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
+} from "./ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
+import { Separator } from "./ui/separator";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "./ui/card";
 
 const spirits = [
   { value: "vodka", label: "Vodka" },
@@ -71,9 +67,13 @@ export function CocktailGenerator() {
   return (
     <div className="max-w-2xl mx-auto p-6 space-y-8">
       <div className="space-y-2">
-        <h2 className="text-3xl font-bold tracking-tight">
-          Cocktail Generator
-        </h2>
+        <div className="flex items-center justify-center mb-6">
+          <Martini className="w-10 h-10 text-white" />
+
+          <h2 className="text-3xl font-bold tracking-tight">
+            Cocktail Generator
+          </h2>
+        </div>
         <p className="text-muted-foreground">
           Select a spirit and add ingredients to generate a custom cocktail
           recipe.

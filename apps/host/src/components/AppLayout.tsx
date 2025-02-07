@@ -15,7 +15,7 @@ export default function Layout({
     >
       <div>
         {showBoundary ? (
-          <span className="text-white font-bold top-1 left-1 z-10 bg-gradient-to-r from-gray-500 to-black p-1 rounded-lg mt-2 ml-2">
+          <span className="text-white font-bold top-1 left-1 z-10 p-1 rounded-lg mt-2 ml-2">
             Host Application
           </span>
         ) : (

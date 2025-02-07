@@ -6,7 +6,7 @@ import { Link } from "react-router";
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   return (
-    <header className="w-full bg-black backdrop-blur-md ">
+    <header className="w-full">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-10">
           <Link to="/">
@@ -18,10 +18,10 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 text-gray-400">
+          <nav className="hidden md:flex items-center space-x-8">
             <a
               href="https://github.com/nathanroark/zephyr-app"
-              className="inline-flex items-center hover:text-gray-600 transition-colors"
+              className="inline-flex items-center hover:text-white transition-colors"
             >
               <Github className="h-5 w-5 mr-1" />
               <span>GitHub</span>
